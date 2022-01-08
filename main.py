@@ -14,6 +14,7 @@ def main():
             2018, # 2018 is the earliest complete year we can gather stats for
             2019,
             2020,
+            2021,
         ]
 
         # cd to blog dir so git commands work
@@ -29,6 +30,8 @@ def main():
 
         with stats_cache_path.open('w') as file:
             yaml.dump(stats_for_all_years, file)
+    else:
+        print('stats-cache.yaml exists, not re-calculating stats.')
 
     with stats_cache_path.open() as file:
         stats_for_all_years = yaml.load(file, yaml.SafeLoader)

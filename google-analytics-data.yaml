@@ -1,17 +1,23 @@
-- year: 2018
+# Data is per year, not cumulative from start
+# Entered manually
+2018:
   num_users: 62792
   num_sessions: 85602
   num_pageviews: 115551
-- year: 2019
+2019:
   num_users: 49097
   num_sessions: 67925
   num_pageviews: 98618
-- year: 2020
+2020:
   num_users: 96820
   num_sessions: 134113
   num_pageviews: 186524
-- year: 2021
+2021:
   num_users: 139758
   num_sessions: 195444
   num_pageviews: 266868
+2022:
+  num_users: 197000
+  num_sessions: 307000
+  num_pageviews: 384000
   

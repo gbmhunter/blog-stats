@@ -1,4 +1,5 @@
-- num_asciidoc_files: 0
+2018:
+  num_asciidoc_files: 0
   num_chars: 2713807
   num_commits: 141
   num_content_files: 925
@@ -9,7 +10,8 @@
   num_words: 379641
   other_files: []
   year: 2018
-- num_asciidoc_files: 0
+2019:
+  num_asciidoc_files: 0
   num_chars: 3014930
   num_commits: 519
   num_content_files: 1005
@@ -20,7 +22,8 @@
   num_words: 424462
   other_files: []
   year: 2019
-- num_asciidoc_files: 0
+2020:
+  num_asciidoc_files: 0
   num_chars: 3369564
   num_commits: 796
   num_content_files: 1089
@@ -31,14 +34,27 @@
   num_words: 469881
   other_files: []
   year: 2020
-- num_asciidoc_files: 96
+2021:
+  num_asciidoc_files: 96
   num_chars: 3834495
   num_commits: 1272
   num_content_files: 1098
-  num_diagrams: 111
+  num_diagrams: 160
   num_images: 3989
   num_lines: 89826
   num_markdown_files: 1002
   num_words: 535988
   other_files: []
   year: 2021
+2022:
+  num_asciidoc_files: 120
+  num_chars: 4376536
+  num_commits: 1679
+  num_content_files: 1168
+  num_diagrams: 241
+  num_images: 4319
+  num_lines: 97007
+  num_markdown_files: 1048
+  num_words: 604570
+  other_files: []
+  year: 2022

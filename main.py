@@ -7,9 +7,12 @@ import yaml
 import matplotlib.pyplot as plt
 import pandas as pd
 
+blog_path = Path('../blog/')
+script_path = Path(os.path.dirname(os.path.realpath(__file__)))
+output_path = script_path / 'output'
+
 def main():
-    blog_path = Path('../blog/')
-    script_path = Path(os.path.dirname(os.path.realpath(__file__)))
+    
     stats_cache_path = script_path / 'stats-cache.yaml'
     google_analytics_path = script_path / 'google-analytics-data.yaml'
 
@@ -145,7 +148,6 @@ def get_file_stats(file_path):
     return num_chars, num_words, num_lines
 
 def create_graphs(stats_for_all_years, google_analytics_data):
-    fig, ax = plt.subplots()
 
     df_data = {}
     column_names = []
@@ -158,10 +160,27 @@ def create_graphs(stats_for_all_years, google_analytics_data):
         # are the same for every year
         column_names = list(stats_for_all_years[year].keys())
 
+    # Add Google analytics data
+    for idx, year in enumerate(google_analytics_data):
+        year_data = google_analytics_data[year]
+        for (stat, value) in year_data.items():
+            df_data[year].append(value)
+
+        if idx == 0:
+            column_names.extend(list(year_data.keys()))
+
     df = pd.DataFrame.from_dict(df_data, orient='index', columns=column_names)
     # df = df.append(google_analytics_data, ignore_index=True)
     # df = df.transpose()
     print(df)
+
+    output_path.mkdir(exist_ok=True)
+    fig, ax = plt.subplots()
+
+    # Create bar graph of page views
+    ax.bar(df.index, df['num_pageviews'])
+    plt.savefig(output_path / 'test.png')
+
 
 if __name__ == '__main__':
     main()

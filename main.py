@@ -5,6 +5,8 @@ from pathlib import Path
 import yaml
 
 import matplotlib.pyplot as plt
+from matplotlib.ticker import EngFormatter
+from matplotlib.gridspec import GridSpec
 import pandas as pd
 
 blog_path = Path('../blog/')
@@ -175,11 +177,49 @@ def create_graphs(stats_for_all_years, google_analytics_data):
     print(df)
 
     output_path.mkdir(exist_ok=True)
-    fig, ax = plt.subplots()
+    # fig, axes = plt.subplots(nrows=2, ncols=2)
+
+    fig = plt.figure(figsize=(8, 5))
+    gs = GridSpec(2, 3, wspace=0.5, hspace=0.7)
 
     # Create bar graph of page views
-    ax.bar(df.index, df['num_pageviews'])
-    plt.savefig(output_path / 'test.png')
+    ax1 = fig.add_subplot(gs[0, :])
+    ax1.bar(df.index, df['num_pageviews'], color='C3')
+    formatter0 = EngFormatter(unit='')
+    ax1.yaxis.set_major_formatter(formatter0)
+    ax1.set_xlabel('Year')
+    ax1.set_ylabel('Num. page views')
+    ax1.set_title('Num. page views\n(per year)')
+
+    # Create bar graph of num. content files
+    ax = fig.add_subplot(gs[1, 0])
+    ax.bar(df.index, df['num_content_files'], color='C2')
+    formatter0 = EngFormatter(unit='')
+    ax.yaxis.set_major_formatter(formatter0)
+    ax.set_xlabel('Year')
+    ax.set_ylabel('Num. pages')
+    ax.set_title('Num. of content pages\n(cumulative)')
+
+    # Create bar graph of num. words
+    ax = fig.add_subplot(gs[1, 1])
+    ax.bar(df.index, df['num_words'], color='C1')
+    formatter0 = EngFormatter(unit='')
+    ax.yaxis.set_major_formatter(formatter0)
+    ax.set_xlabel('Year')
+    ax.set_ylabel('Num. words')
+    ax.set_title('Num. words\n(cumulative)')
+
+    # Create bar graph of num. images
+    ax = fig.add_subplot(gs[1, 2])
+    ax.bar(df.index, df['num_images'])
+    formatter0 = EngFormatter(unit='')
+    ax.yaxis.set_major_formatter(formatter0)
+    ax.set_xlabel('Year')
+    ax.set_ylabel('Num. images')
+    ax.set_title('Num. images\n(cumulative)')
+
+    # plt.tight_layout()
+    plt.savefig(output_path / 'num-page-views-per-year.png')
 
 
 if __name__ == '__main__':

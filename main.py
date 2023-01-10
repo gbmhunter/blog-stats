@@ -219,7 +219,7 @@ def create_graphs(stats_for_all_years, google_analytics_data):
     ax.set_title('Num. images\n(cumulative)')
 
     # plt.tight_layout()
-    plt.savefig(output_path / 'num-page-views-per-year.png')
+    plt.savefig(output_path / 'stats-graphs.png')
 
 
 if __name__ == '__main__':

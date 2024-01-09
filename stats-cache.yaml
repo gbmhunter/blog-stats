@@ -58,3 +58,15 @@
   num_words: 604570
   other_files: []
   year: 2022
+2023:
+  num_asciidoc_files: 0
+  num_chars: 4666675
+  num_commits: 1926
+  num_content_files: 1221
+  num_diagrams: 309
+  num_images: 4518
+  num_lines: 99172
+  num_markdown_files: 1221
+  num_words: 639174
+  other_files: []
+  year: 2023

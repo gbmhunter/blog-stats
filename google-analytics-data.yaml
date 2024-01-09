@@ -20,4 +20,7 @@
   num_users: 197000
   num_sessions: 307000
   num_pageviews: 384000
-  
+2023:
+  num_users: 211000
+  num_sessions: 331000
+  num_pageviews: 436000

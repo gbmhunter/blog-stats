@@ -1,3 +1,9 @@
+## Running
+
+Update the `years` List in `main.py` with the years you want to grab fresh data for. You don't have to do this if the data is already in `stats-cache.yaml`.
+
+Make sure to add the Google analytics data for all years you want graphed, if it is missing those years will also be missing from all graphs.
+
 ## Stats Explanation
 
 All stats are cumulative, i.e. cumulative total number at the end of year, including all years prior. Take differences between years to work out how many per year.

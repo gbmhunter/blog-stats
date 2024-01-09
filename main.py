@@ -33,6 +33,7 @@ def main():
         # 2020,
         # 2021,
         # 2022,
+        # 2023,
     ]
 
     print(f'Updating stats for the following years: {years}')
@@ -172,9 +173,7 @@ def create_graphs(stats_for_all_years, google_analytics_data):
             column_names.extend(list(year_data.keys()))
 
     df = pd.DataFrame.from_dict(df_data, orient='index', columns=column_names)
-    # df = df.append(google_analytics_data, ignore_index=True)
-    # df = df.transpose()
-    print(df)
+    # print(df)
 
     output_path.mkdir(exist_ok=True)
     # fig, axes = plt.subplots(nrows=2, ncols=2)
@@ -199,6 +198,8 @@ def create_graphs(stats_for_all_years, google_analytics_data):
     ax.set_xlabel('Year')
     ax.set_ylabel('Num. pages')
     ax.set_title('Num. of content pages\n(cumulative)')
+    ax.set_xticks(df.index)
+    ax.tick_params(axis='x', rotation=90)
 
     # Create bar graph of num. words
     ax = fig.add_subplot(gs[1, 1])
@@ -208,6 +209,8 @@ def create_graphs(stats_for_all_years, google_analytics_data):
     ax.set_xlabel('Year')
     ax.set_ylabel('Num. words')
     ax.set_title('Num. words\n(cumulative)')
+    ax.set_xticks(df.index)
+    ax.tick_params(axis='x', rotation=90)
 
     # Create bar graph of num. images
     ax = fig.add_subplot(gs[1, 2])
@@ -217,6 +220,12 @@ def create_graphs(stats_for_all_years, google_analytics_data):
     ax.set_xlabel('Year')
     ax.set_ylabel('Num. images')
     ax.set_title('Num. images\n(cumulative)')
+    ax.set_xticks(df.index)
+    ax.tick_params(axis='x', rotation=90)
+
+    # Extend margin at bottom of graph to prevent clipping
+    plt.subplots_adjust(bottom=0.15)
+    
 
     # plt.tight_layout()
     plt.savefig(output_path / 'stats-graphs.png')

@@ -70,3 +70,15 @@
   num_words: 639174
   other_files: []
   year: 2023
+2024:
+  num_asciidoc_files: 0
+  num_chars: 5235603
+  num_commits: 2479
+  num_content_files: 1313
+  num_diagrams: 544
+  num_images: 3222
+  num_lines: 105506
+  num_markdown_files: 1313
+  num_words: 703619
+  other_files: []
+  year: 2024

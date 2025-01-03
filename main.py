@@ -34,6 +34,7 @@ def main():
         # 2021,
         # 2022,
         # 2023,
+        2024,
     ]
 
     print(f'Updating stats for the following years: {years}')
@@ -92,8 +93,10 @@ def gather_stats(blog_path: str, year: int):
     # List of root paths that we will recursively scan to build up stats.
     # Make sure page content is included in these
     root_paths_to_walk = [
-        blog_path / 'content',
-        blog_path / 'static' / 'images',
+        blog_path / 'content', # Hugo, 2018-2023
+        blog_path / 'static' / 'images', # Hugo, 2018-2023
+        blog_path / 'src' / 'content', # Astro.js, 2024
+        blog_path / 'public', # Astro.js, 2024
     ]
 
     stats['num_markdown_files'] = 0
@@ -109,7 +112,7 @@ def gather_stats(blog_path: str, year: int):
         for root, dirs, files in os.walk(root_path_to_walk):
             # print(dirs)
             for filename in files:
-                if filename.endswith('.md'):
+                if filename.endswith('.md') or filename.endswith('.mdx'):
                     stats['num_markdown_files'] += 1
                     stats['num_content_files'] += 1
                     num_chars, num_words, num_lines = get_file_stats(Path(root) / filename)
@@ -182,6 +185,7 @@ def create_graphs(stats_for_all_years, google_analytics_data):
     gs = GridSpec(2, 3, wspace=0.5, hspace=0.7)
 
     # Create bar graph of page views
+    print(df)
     ax1 = fig.add_subplot(gs[0, :])
     ax1.bar(df.index, df['num_pageviews'], color='C3')
     formatter0 = EngFormatter(unit='')
